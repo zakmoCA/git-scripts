@@ -12,8 +12,11 @@ for dir in $(find . -type d -mtime -28 -maxdepth 1); do
         echo "checking repository: $dir"
         
         if [ -z "$(git status --porcelain)" ]; then
-            echo "no unstaged changes, pulling latest changes..."
+            echo "✋ there are upstream changes in the remote repo"
+            echo "no local unstaged changes 👍"
+            echo "✅ pulling latest changes..."
             git pull
+            echo "✨✨✨ successfully pulled latest changes ✨✨✨"
         else
             echo "unstaged changes present, skipping..."
         fi
